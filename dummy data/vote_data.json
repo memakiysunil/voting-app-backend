@@ -1,0 +1,17 @@
+ 
+{
+    "voteRecord": [
+        {
+            "party": "bjp",
+            "count": 2
+        },
+        {
+            "party": "aap",
+            "count": 1
+        },
+        {
+            "party": "BJP",
+            "count": 0
+        }
+    ]
+}

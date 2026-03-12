@@ -1,0 +1,20 @@
+{
+    "name": "Mer kartik",
+    "party": "bjp",
+    "age": 31,
+    "votes": [
+        {
+            "user": "69aa95746b52cfae2b04cf9f",
+            "votedAt": "2026-03-06T08:53:36.169+00:00"
+        },
+        {
+            "user": "69aa98e441df501e17c5feb3",
+            "votedAt": "2026-03-06T08:53:36.169+00:00"
+        },
+        {
+             "user": "69b24ac54128ed41703cbc88",
+             "votedAt": "2026-03-12T05:08:19.536+00:00"
+        }
+    ],
+    "voteCount": 3
+}
