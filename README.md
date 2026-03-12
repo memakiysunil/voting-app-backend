@@ -72,15 +72,28 @@ GET /vote/count
 
 ---
 
+## Architecture
+
+This project follows the MVC (Model-View-Controller) architecture pattern.
+
+### Model
+Handles database schemas and data logic using MongoDB and Mongoose.
+
+### Controller
+Contains the business logic for handling API requests and responses.
+
+### Routes
+Defines the API endpoints and connects them to controller functions.
+
 ## Project Structure
 
 ```
-config/
-controllers/
-middlewares/
-models/
-routes/
-server.js
+config/        # Database configuration
+controllers/   # Business logic
+middlewares/   # Authentication and authorization
+models/        # Mongoose schemas
+routes/        # API routes
+server.js      # Application entry point
 ```
 
 ---
@@ -90,7 +103,7 @@ server.js
 Clone the repository: voting-app-backend
 
 ```
-git clone https: https://github.com/memakiysunil/voting-app-backend.git
+git clone https://github.com/memakiysunil/voting-app-backend.git
 ```
 
 Install dependencies:
@@ -117,6 +130,8 @@ npm start
 ## Author
 
 Sunil
+
+GitHub: https://github.com/memakiysunil
 
  
 
