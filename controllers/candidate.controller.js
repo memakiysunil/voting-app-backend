@@ -51,7 +51,7 @@ exports.deleteCandidate = async (req, res, next) => {
         const response = await Candidate.findByIdAndDelete(req.params.candidateID);
 
         if(!response){
-            const error = new Error('Candidate nt found');
+            const error = new Error('Candidate not found');
             error.statusCode = 404;
             return next(error);
         }
