@@ -1,123 +1,146 @@
-# Voting Application Backend
+# 🗳️ Voting Application Backend
 
 ## Overview
 
-This project is a backend system for a secure voting application built using **Node.js, Express.js, and MongoDB**.
-It allows users to register using their Aadhaar number, vote for candidates, and view election results.
+A secure backend system for an online voting application built using **Node.js, Express.js, and MongoDB**.
 
-The system enforces **one-person-one-vote** and includes **role-based access control** for administrators.
-
----
-
-## Tech Stack
-
-* Node.js
-* Express.js
-* MongoDB
-* Mongoose
-* JWT Authentication
-* bcrypt for password hashing
+Users can register with their Aadhaar number, login securely, and cast their vote. The system strictly enforces **one-person-one-vote** rule and provides **role-based access control** for administrators.
 
 ---
 
-## Features
+## 🛠️ Tech Stack
 
-### User Features
-
-* User Registration with Aadhaar validation
-* Secure Login using JWT
-* One person can vote only once
-* View candidate list
-* View vote results
-
-### Admin Features
-
-* Add new candidates
-* Update candidate information
-* Delete candidates
-* Manage election candidates
+| Technology | Purpose |
+|---|---|
+| Node.js | Runtime environment |
+| Express.js | Web framework |
+| MongoDB | Database |
+| Mongoose | ODM for MongoDB |
+| JWT | Authentication |
+| bcrypt | Password hashing |
+| dotenv | Environment variables |
+| Helmet | HTTP Security Headers |
 
 ---
 
-## Security Features
+## ✨ Features
 
-* Password hashing using bcrypt
-* JWT based authentication
-* Role-based authorization (Admin / Voter)
-* Validation for Aadhaar number
+### 👤 User Features
+- Register using Aadhaar number (12-digit validation)
+- Secure login with JWT token
+- Cast vote — only once per user
+- View list of candidates
+- View election results
+
+### 🔐 Admin Features
+- Add new candidates
+- Update candidate information
+- Delete candidates
+- View vote count (sorted by votes)
 
 ---
 
-## API Endpoints
+## 🔒 Security Features
+- Passwords hashed using **bcrypt**
+- **JWT** based authentication & protected routes
+- **Role-based authorization** — Admin / Voter
+- Aadhaar number uniqueness validation
+- Centralized error handling middleware
+- **Helmet.js** — Secures HTTP headers to prevent common web attacks
+
+---
+
+## 📁 Project Structure
+
+```
+voting-app-backend/
+├── config/          # Database configuration
+├── controllers/     # Business logic
+├── middlewares/     # Auth & role middlewares
+├── models/          # Mongoose schemas
+├── routes/          # API route definitions
+├── server.js        # Application entry point
+└── app.js           # Express app setup
+```
+
+---
+
+## 🚀 API Endpoints
 
 ### Authentication
-
-POST /signup
-POST /login
+```
+POST /user/signup             → Register new user
+POST /user/login              → Login & get JWT token
+GET  /user/profile            → Get logged-in user profile
+PUT  /user/profile/password   → Update password
+```
 
 ### Candidates
-
-GET /candidates
-POST /candidate
-PUT /candidate/:candidateID
-DELETE /candidate/:candidateID
-
-### Voting
-
-POST /vote/:candidateID
-
-### Results
-
-GET /vote/count
-
----
-
-## Project Structure
-
 ```
-config/
-controllers/
-middlewares/
-models/
-routes/
-server.js
+GET    /candidate                → Get all candidates
+POST   /candidate                → Add candidate (Admin only)
+PUT    /candidate/:candidateID   → Update candidate (Admin only)
+DELETE /candidate/:candidateID   → Delete candidate (Admin only)
+```
+
+### Voting & Results
+```
+POST /candidate/vote/:candidateID → Cast vote (Voter only)
+GET  /candidate/vote/count        → View results (Admin only)
 ```
 
 ---
 
-## Installation
+## ⚙️ Installation & Setup
 
-Clone the repository: voting-app-backend
-
+**1. Clone the repository**
+```bash
+git clone https://github.com/memakiysunil/voting-app-backend.git
+cd voting-app-backend
 ```
-git clone https: https://github.com/memakiysunil/voting-app-backend.git
-```
 
-Install dependencies:
-
-```
+**2. Install dependencies**
+```bash
 npm install
 ```
 
-Create a `.env` file:
-
-```
-MONGO_URL=your_mongodb_connection
+**3. Create `.env` file**
+```env
+MONGO_URL=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
+PORT=8000
 ```
 
-Run the server:
+**4. Run the server**
+```bash
+# Development
+npm run dev
 
-```
+# Production
 npm start
 ```
 
 ---
 
-## Author
+## 🏗️ Architecture
 
-Sunil
+This project follows **MVC (Model-View-Controller)** pattern:
 
- 
+- **Model** — MongoDB schemas using Mongoose
+- **Controller** — Business logic for each feature
+- **Routes** — API endpoint definitions
+- **Middlewares** — JWT auth + Admin role check + Error handler
 
+---
 
+## 👨‍💻 Author
+
+**Sunil Memakiya**
+
+GitHub: [@memakiysunil](https://github.com/memakiysunil)
+
+---
+
+## 📄 License
+
+ISC
