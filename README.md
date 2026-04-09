@@ -20,6 +20,7 @@ Users can register with their Aadhaar number, login securely, and cast their vot
 | bcrypt | Password hashing |
 | dotenv | Environment variables |
 | Helmet | HTTP Security Headers |
+| express-rate-limit | API Rate Limiting |
 
 ---
 
@@ -47,6 +48,7 @@ Users can register with their Aadhaar number, login securely, and cast their vot
 - Aadhaar number uniqueness validation
 - Centralized error handling middleware
 - **Helmet.js** — Secures HTTP headers to prevent common web attacks
+- **Rate Limiting** — Max 1000 requests per 24 hours per user
 
 ---
 
