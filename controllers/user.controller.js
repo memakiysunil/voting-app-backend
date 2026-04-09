@@ -38,7 +38,7 @@ exports.signup = async(req, res, next) => {
         const payload = {id: response.id};
         const token = generateToken(payload);
 
-        res.status(201).json({sucess: true, response , token});
+        res.status(201).json({success: true, response , token});
  
     }
     catch(err){
