@@ -104,6 +104,8 @@ exports.voteCandidate = async (req, res, next) => {
 
         user.isVoted = true;
         await user.save();
+
+        res.status(200).json({ success: true, message: 'Vote cast successfully' });
     }
     catch(err){
         next(err);
