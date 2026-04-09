@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const helmet = require('helmet');
 const mongoose = require('./config/db');
 const errorHandler = require('./middlewares/errorMiddleware');
 const userrouter = require('./routes/user.routes');
@@ -9,6 +10,7 @@ const candidaterouter = require('./routes/candidate.routes');
 
 app.use(express.json());
 app.use(cors());
+app.use(helmet());
 
 app.use('/user', userrouter);
 app.use('/candidate',candidaterouter);
