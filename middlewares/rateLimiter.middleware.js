@@ -13,27 +13,12 @@ const globalLimiter = rateLimit({
         });
     }
 });
- const loginLimiter = rateLimit({
-    windowMs: 24 * 60 * 60 * 1000,
-    max: 3,
-    
-    
-    keyGenerator: (req) => `login:${ipKeyGenerator(req)}`,
-    
-    handler: (req, res) => {
-        res.status(429).json({
-            success: false,
-            message: 'Only 3 login attempts allowed per 24 hours!'
-        });
-    }
-});
-
 
 const strictLimiter = rateLimit({
     windowMs: 24 * 60 * 60 * 1000,
     max: 3,
  
-    keyGenerator: (req) => req.user?.id || ipKeyGenerator(req),
+    keyGenerator: (req) => `strict:${req.user?.id || ipKeyGenerator(req)}`,
     handler: (req, res) => {
         res.status(429).json({
             success: false,
@@ -42,4 +27,4 @@ const strictLimiter = rateLimit({
     }
 });
 
-module.exports = { globalLimiter, loginLimiter, strictLimiter };
+module.exports = { globalLimiter, strictLimiter };
