@@ -66,8 +66,8 @@ GET  https://voting-app-backend-uu0u.onrender.com/candidate
 - Aadhaar number uniqueness validation
 - Centralized error handling middleware
 - **Helmet.js** — Secures HTTP headers to prevent common web attacks
-- **Rate Limiting** —  1000 requests/24hrs globally, 
-  3 attempts/24hrs on login & sensitive routes
+- **Rate Limiting** — 1000 requests/24hrs globally, 
+  3 attempts/24hrs on sensitive routes (update password, get candidates)    
 
 ---
 
