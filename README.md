@@ -8,6 +8,22 @@ Users can register with their Aadhaar number, login securely, and cast their vot
 
 ---
 
+## 🌐 Live Demo
+
+**Base URL:** https://voting-app-backend-uu0u.onrender.com
+
+> ⚠️ Note: Free tier server sleeps after 15 minutes of inactivity. First request may take 30-60 seconds to wake up the server.
+
+### Test Endpoints
+```
+GET  https://voting-app-backend-uu0u.onrender.com/
+POST https://voting-app-backend-uu0u.onrender.com/user/signup
+POST https://voting-app-backend-uu0u.onrender.com/user/login
+GET  https://voting-app-backend-uu0u.onrender.com/candidate
+```
+
+---
+
 ## 🛠️ Tech Stack
 
 | Technology | Purpose |
@@ -21,6 +37,8 @@ Users can register with their Aadhaar number, login securely, and cast their vot
 | dotenv | Environment variables |
 | Helmet | HTTP Security Headers |
 | express-rate-limit | API Rate Limiting |
+| Render | Cloud Deployment |
+| MongoDB Atlas | Cloud Database |
 
 ---
 
@@ -48,7 +66,8 @@ Users can register with their Aadhaar number, login securely, and cast their vot
 - Aadhaar number uniqueness validation
 - Centralized error handling middleware
 - **Helmet.js** — Secures HTTP headers to prevent common web attacks
-- **Rate Limiting** — Max 1000 requests per 24 hours per user
+- **Rate Limiting** —  1000 requests/24hrs globally, 
+  3 attempts/24hrs on login & sensitive routes
 
 ---
 
@@ -58,7 +77,7 @@ Users can register with their Aadhaar number, login securely, and cast their vot
 voting-app-backend/
 ├── config/          # Database configuration
 ├── controllers/     # Business logic
-├── middlewares/     # Auth & role middlewares
+├── middlewares/     # Auth, role & rate limiting middlewares
 ├── models/          # Mongoose schemas
 ├── routes/          # API route definitions
 ├── server.js        # Application entry point
@@ -131,7 +150,7 @@ This project follows **MVC (Model-View-Controller)** pattern:
 - **Model** — MongoDB schemas using Mongoose
 - **Controller** — Business logic for each feature
 - **Routes** — API endpoint definitions
-- **Middlewares** — JWT auth + Admin role check + Error handler
+- **Middlewares** — JWT auth + Admin role check + Error handler + Rate limiting
 
 ---
 
