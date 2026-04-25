@@ -132,7 +132,7 @@ exports.voteCount = async (req, res, next) => {
 
 exports.getCandidate = async(req, res, next) => {
     try{
-        const candidate = await Candidate.find({}, 'name party -_id');
+        const candidate = await Candidate.find({}, 'name party age voteCount');
         res.status(200).json({success: true, candidate});
     }
     catch(err){
