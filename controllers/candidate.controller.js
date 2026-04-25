@@ -48,19 +48,30 @@ exports.updateCandidate = async(req, res, next) => {
 
 exports.deleteCandidate = async (req, res, next) => {
     try{
-        const response = await Candidate.findByIdAndDelete(req.params.candidateID);
+        const candidate = await Candidate.findById(req.params.candidateID);
 
-        if(!response){
+        if(!candidate){
             const error = new Error('Candidate not found');
             error.statusCode = 404;
             return next(error);
         }
 
+        const voterIds = candidate.votes.map(v=> v.user);
+
+        if(voterIds.length > 0){
+            await User.updateMany(
+                {_id : {$in: voterIds}},
+                {$set: {isVoted: false}}
+            );
+        }
+
+        await candidate.deleteOne();
+
         res.status(200).json(
             {
                 success: true,
                 message: 'Candidate deleted successfully',
-                response
+                candidate
             }
         );
     }
